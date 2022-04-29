@@ -1,14 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Posts</h1>
-
-<div id="posts">
+    <div id="posts">
   <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+  
+  <div class="card">
+    <h7 class="card-header">
+      Posted <%= time_tag post.created_at, "data-local": "time-ago" %>,
+      <%= pluralize post.comments.count, "comment" %>
+    </h7>
+  <div class="card-body">
+    <h3 class="card-title"><%= post.title %></h3>
+    <p class="card-text"> <%= post.content %></p>
+    <%= link_to "Show this post", post, class:"btn btn-primary" %>
+  </div>
+</div><br>
   <% end %>
 </div>
-
-<%= link_to "New post", new_post_path %>

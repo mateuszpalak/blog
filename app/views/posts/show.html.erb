@@ -1,11 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @post %>
-<%= render "posts/comments", post: @post %>
+<div class="card">
+    <h7 class="card-header">
+      Posted <%= time_tag @post.created_at, "data-local": "time-ago" %>
+    </h7>
+  <div class="card-body">
+    <h3 class="card-title"><%= @post.title %></h3>
+    <p class="card-text"> <%= @post.content %></p>
+    <div>
+      <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-primary" %><br><br>
+      <%= button_to "Destroy this post", @post, method: :delete, class:"btn btn-danger" %>
+    </div>
+  </div>
+  
+</div><br>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
-
-  <%= button_to "Destroy this post", @post, method: :delete %>
+<div class="card">
+  <h7 class="card-header"><%= pluralize @post.comments.count, "comment" %></h7>
+  <div class="card-body">
+    <h3 class="card-title">Comments</h3>
+    <p class="card-text"><%= render "posts/comments", post: @post %></p>
+  </div>
 </div>
