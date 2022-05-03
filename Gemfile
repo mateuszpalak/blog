@@ -33,6 +33,9 @@ gem "redis", "~> 4.0"
 # Add pagination
 gem 'will_paginate', '~> 3.3'
 
+# Pretty URL links
+gem 'friendly_id', '~> 5.4', '>= 5.4.2'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
